@@ -45,8 +45,6 @@ public class MainActivity extends ActionBarActivity {
     /** Used by sendButton  **/
 
     public void sendMessage (View view) {
-        // TODO: Do something here
-
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText editText = (EditText) findViewById(R.id.edit_message);
         String message = editText.getText().toString();
