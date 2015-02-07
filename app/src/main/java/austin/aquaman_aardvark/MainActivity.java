@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 
 
+// changed -- Austin
 public class MainActivity extends ActionBarActivity {
 
     public final static String EXTRA_MESSAGE = "austin.aquaman_aardvark.MESSAGE";
