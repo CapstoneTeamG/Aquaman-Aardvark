@@ -73,6 +73,15 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    /** Used to go to Sort Activity **/
+
+    public void goToSortScreen (View view) {
+        Intent intent = new Intent(this, Sort.class);
+
+
+        startActivity(intent);
+    }
+
     // Action bar functions
     private void openSearch()
     {
