@@ -1,4 +1,4 @@
-package AppController;
+package ListViewUtils;
 
 /**
  * Created by austin on 2/11/15.
@@ -7,12 +7,10 @@ package AppController;
 //TODO: WHAT?!?!?!
 
 import android.app.Application;
-import android.test.ApplicationTestCase;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 public class AppController extends Application {
