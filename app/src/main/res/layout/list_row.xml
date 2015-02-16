@@ -7,13 +7,61 @@
     android:padding="8dp"
     >
 
-    <!-- A number -->
+
+    <!-- Thumbnail placeholder -->
     <TextView
-        android:id="@+id/number"
+        android:id="@+id/thumbnail"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp"
+        />
+
+    <!-- SortedData.value -->
+    <TextView
+        android:id="@+id/value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/number"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/SortedData_value"
         android:textStyle="bold"
         />
+
+    <!-- SortedData.id -->
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/value"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/SortedData_id"
+        />
+
+    <!-- SortedData.sentence -->
+    <TextView
+        android:id="@+id/sentence"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textColor="@color/SortedData_sentence"
+        android:textSize="@dimen/SortedData_sentence"
+        />
+
+    <!-- SortedData.description -->
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/SortedData_description"
+        android:textSize="@dimen/SortedData_description"
+        />
+
+
 
 </RelativeLayout>

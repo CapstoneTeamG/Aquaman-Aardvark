@@ -8,4 +8,8 @@
     <color name="list_row_hover_start_color">#EBEEF0</color>
     <color name="list_row_hover_end_color">#EBEEF0</color>
 
+    <!-- SortedData -->
+    <color name="SortedData_sentence">#666666</color>
+    <color name="SortedData_description">#888888</color>
+
 </resources>

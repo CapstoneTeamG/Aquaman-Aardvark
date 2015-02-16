@@ -7,7 +7,7 @@
     tools:context="austin.aquaman_aardvark.Sort">
 
     <ListView
-        android:id="@+id/sortList"
+        android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:divider="@color/RED"
