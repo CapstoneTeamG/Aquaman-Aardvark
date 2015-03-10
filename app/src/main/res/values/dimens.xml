@@ -9,4 +9,11 @@
     <dimen name="SortedData_sentence">13dp</dimen>
     <dimen name="SortedData_description">12dp</dimen>
 
+    <!-- Adding for Deal ListView -->
+    <dimen name="Deal_used">17dp</dimen>
+    <dimen name="Deal_id">15dp</dimen>
+    <dimen name="Deal_description">13dp</dimen>
+    <dimen name="Deal_start_date">12dp</dimen>
+    <dimen name="Deal_exp_date">12dp</dimen>
+
 </resources>

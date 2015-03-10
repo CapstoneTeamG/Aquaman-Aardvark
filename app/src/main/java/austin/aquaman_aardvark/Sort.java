@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +28,10 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 
 import ListViewUtils.AppController;
-import ListViewUtils.CustomListAdapter;
+//import ListViewUtils.CustomListAdapter;
+import ListViewUtils.DealListAdapter;
+import Objects.DatabaseInterface;
+import Objects.Deal;
 import Objects.SortedData;
 
 public class Sort extends Activity {
@@ -39,19 +43,28 @@ public class Sort extends Activity {
 //    private static final String url = "http://what.com";
     private ProgressDialog pDialog;
     private List<SortedData> dataList = new ArrayList<SortedData>();
+    private ArrayList<Deal> deals = new ArrayList<Deal>();
     private ListView listView;
-    private CustomListAdapter adapter;
+    private DealListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sort);
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+
         // ADDED FROM TUTORIAL
-        final int numData = 10;
+        deals = DatabaseInterface.requestDeals();
+
+        Log.d("!!!DEAL!!!", Integer.toString(deals.size()));
+//        final int numData = 100;
 
         listView = (ListView) findViewById(R.id.list);
-        adapter = new CustomListAdapter(this, dataList);
+//        adapter = new CustomListAdapter(this, dataList);
+        adapter = new DealListAdapter(this, deals);
         listView.setAdapter(adapter);
 
         pDialog = new ProgressDialog(this);
@@ -90,11 +103,11 @@ public class Sort extends Activity {
 //                }
 //            }
 //        }
-        for (int dataInstance = 0; dataInstance < numData; dataInstance++)
-        {
-            dataList.add(new SortedData(dataInstance));
-        }
-        Collections.sort(dataList);
+//        for (int dataInstance = 0; dataInstance < numData; dataInstance++)
+//        {
+//            dataList.add(new SortedData(dataInstance));
+//        }
+//        Collections.sort(dataList);
 //        AppController.getInstance().addToRequestQueue(dataReq);
     }
 

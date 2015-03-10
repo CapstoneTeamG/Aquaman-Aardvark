@@ -17,18 +17,18 @@
         android:layout_marginRight="8dp"
         />
 
-    <!-- SortedData.value -->
+    <!-- Deal.used -->
     <TextView
-        android:id="@+id/value"
+        android:id="@+id/used"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textSize="@dimen/SortedData_value"
+        android:textSize="@dimen/Deal_used"
         android:textStyle="bold"
         />
 
-    <!-- SortedData.id -->
+    <!-- Deal.id -->
     <TextView
         android:id="@+id/id"
         android:layout_width="fill_parent"
@@ -36,31 +36,107 @@
         android:layout_below="@+id/value"
         android:layout_marginTop="1dp"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textSize="@dimen/SortedData_id"
+        android:textSize="@dimen/Deal_id"
         />
 
-    <!-- SortedData.sentence -->
+    <!-- Deal.description -->
     <TextView
-        android:id="@+id/sentence"
+        android:id="@+id/description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/id"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textColor="@color/SortedData_sentence"
-        android:textSize="@dimen/SortedData_sentence"
+        android:textColor="@color/Deal_description"
+        android:textSize="@dimen/Deal_description"
         />
 
-    <!-- SortedData.description -->
+    <!-- Deal.start_date -->
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/start_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:textColor="@color/SortedData_description"
-        android:textSize="@dimen/SortedData_description"
+        android:textColor="@color/Deal_start_date"
+        android:textSize="@dimen/Deal_start_date"
         />
+
+    <!-- Deal.exp_date -->
+    <TextView
+        android:id="@+id/exp_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/Deal_exp_date"
+        android:textSize="@dimen/Deal_exp_date"
+        />
+
+
+
+<!--</RelativeLayout>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/list_row_selector"-->
+    <!--android:padding="8dp"-->
+    <!-->-->
+
+
+    <!--&lt;!&ndash; Thumbnail placeholder &ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/thumbnail"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--/>-->
+
+    <!--&lt;!&ndash; SortedData.value &ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/value"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignTop="@+id/thumbnail"-->
+        <!--android:layout_toRightOf="@+id/thumbnail"-->
+        <!--android:textSize="@dimen/SortedData_value"-->
+        <!--android:textStyle="bold"-->
+        <!--/>-->
+
+    <!--&lt;!&ndash; SortedData.id &ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/id"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/value"-->
+        <!--android:layout_marginTop="1dp"-->
+        <!--android:layout_toRightOf="@+id/thumbnail"-->
+        <!--android:textSize="@dimen/SortedData_id"-->
+        <!--/>-->
+
+    <!--&lt;!&ndash; SortedData.sentence &ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/sentence"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/id"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_toRightOf="@+id/thumbnail"-->
+        <!--android:textColor="@color/SortedData_sentence"-->
+        <!--android:textSize="@dimen/SortedData_sentence"-->
+        <!--/>-->
+
+    <!--&lt;!&ndash; SortedData.description &ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/description"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:textColor="@color/SortedData_description"-->
+        <!--android:textSize="@dimen/SortedData_description"-->
+        <!--/>-->
 
 
 

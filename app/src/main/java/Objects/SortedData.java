@@ -20,8 +20,8 @@ public class SortedData implements Comparable<SortedData>{
 
         // Function's needed variables
         Random random = new Random();
-        int minValue = 0;
-        int maxValue = 25;
+        int minValue = -50;
+        int maxValue = 500;
         int descriptionLength = 10;
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
 

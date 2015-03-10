@@ -12,4 +12,11 @@
     <color name="SortedData_sentence">#666666</color>
     <color name="SortedData_description">#888888</color>
 
+    <!-- Deal -->
+    <color name="Deal_description">#666666</color>
+    <color name="Deal_start_date">#88DD88</color>
+    <color name="Deal_exp_date">#DD8888</color>
+
+
+
 </resources>
