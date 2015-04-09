@@ -10,6 +10,7 @@ import java.util.Random;
  */
 public class DealList {
 //
+    //
 //    public ArrayList<Deal> deals;
     ArrayList<Deal> deals;
 
