@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class DealList {
 //
-    //
+    // this is a new comment?
 //    public ArrayList<Deal> deals;
     ArrayList<Deal> deals;
 
