@@ -9,7 +9,7 @@ import java.util.Random;
  * Created by austin on 3/28/15.
  */
 public class DealList {
-
+//
 //    public ArrayList<Deal> deals;
     ArrayList<Deal> deals;
 
