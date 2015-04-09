@@ -9,12 +9,12 @@ import java.util.Random;
 public class SortedData implements Comparable<SortedData>{
 
     //declaring variables
-    //  description: arbitrary String
-    //     sentence: String containing the value and id
-    //           id: distinct identifier
+    //  desc: arbitrary String
+    //     sentence: String containing the value and dataId
+    //           dataId: distinct identifier
     //        value: number to be sorted
-    private String description, sentence;
-    private int id, value;
+    private String desc, sentence;
+    private int dataId, value;
 
     public SortedData(int id_in) {
 
@@ -26,9 +26,9 @@ public class SortedData implements Comparable<SortedData>{
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
         // identify
-        this.id = id_in;
+        this.dataId = id_in;
         this.value = 0;
-        this.description = "";
+        this.desc = "";
         this.sentence = "";
 
         // assign a random sorting value
@@ -36,44 +36,44 @@ public class SortedData implements Comparable<SortedData>{
 
         // random string
         for (int i = 0; i < descriptionLength; i++)
-            this.description += alphabet.charAt(random.nextInt(alphabet.length()));
+            this.desc += alphabet.charAt(random.nextInt(alphabet.length()));
 
         // constructed sentence
-        this.sentence = "The data [" + this.id + "] has value [" + this.value + "].";
+        this.sentence = "The data [" + this.dataId + "] has value [" + this.value + "].";
     }
 
     public SortedData(String description_in, String sentence_in, int id_in, int value_in) {
-        this.description = description_in;
+        this.desc = description_in;
         this.sentence = sentence_in;
-        this.id = id_in;
+        this.dataId = id_in;
         this.value = value_in;
     }
 
-    public String getDescription() {
-        return this.description;
+    public String getDesc() {
+        return this.desc;
     }
 
     public String getSentence() {
         return this.sentence;
     }
 
-    public int getId() {
-        return this.id;
+    public int getDataId() {
+        return this.dataId;
     }
 
     public int getValue() {
         return this.value;
     }
-    public void setDescription(String description_in) {
-         this.description = description_in;
+    public void setDesc(String description_in) {
+         this.desc = description_in;
     }
 
     public void setSentence(String sentence_in) {
          this.sentence =sentence_in;
     }
 
-    public void setId(int id_in) {
-         this.id = id_in;
+    public void setDataId(int id_in) {
+         this.dataId = id_in;
     }
 
     public void setValue(int value_in) {
@@ -87,9 +87,9 @@ public class SortedData implements Comparable<SortedData>{
         // Primary, sort by descending value
         relation = (otherData.getValue() - this.getValue());
 
-        // Secondary, sort by ascending id
+        // Secondary, sort by ascending dataId
         if (relation == 0)
-            relation = (this.getId() - otherData.getId());
+            relation = (this.getDataId() - otherData.getDataId());
 
         return relation;
     }

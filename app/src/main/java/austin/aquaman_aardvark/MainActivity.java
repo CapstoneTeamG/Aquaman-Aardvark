@@ -63,21 +63,42 @@ public class MainActivity extends ActionBarActivity {
 
     /** Used by sendButton  **/
 
-    public void sendMessage (View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-
-        startActivity(intent);
-
-    }
+//    public void sendMessage (View view) {
+//        Intent intent = new Intent(this, DisplayMessageActivity.class);
+//        EditText editText = (EditText) findViewById(R.id.edit_message);
+//        String message = editText.getText().toString();
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//
+//        startActivity(intent);
+//
+//    }
 
     /** Used to go to Sort Activity **/
 
     public void goToSortScreen (View view) {
         Intent intent = new Intent(this, Sort.class);
 
+
+        startActivity(intent);
+    }
+
+    public void goToUrlRequest (View view)
+    {
+        Intent intent = new Intent(this, UrlRequest.class);
+
+        startActivity(intent);
+    }
+
+    public void goToSortNew (View view)
+    {
+        Intent intent = new Intent(this, SortNew.class);
+
+        startActivity(intent);
+    }
+
+    public void goToSortPopular (View view)
+    {
+        Intent intent = new Intent(this, SortPopular.class);
 
         startActivity(intent);
     }

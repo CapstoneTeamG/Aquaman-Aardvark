@@ -17,6 +17,10 @@
         android:layout_marginRight="8dp"
         />
 
+    <!--~~~~~~~~~~~~-->
+    <!-- SORTED DATA-->
+    <!--~~~~~~~~~~~~-->
+
     <!-- SortedData.value -->
     <TextView
         android:id="@+id/value"
@@ -28,15 +32,15 @@
         android:textStyle="bold"
         />
 
-    <!-- SortedData.id -->
+    <!-- SortedData.dataId -->
     <TextView
-        android:id="@+id/id"
+        android:id="@+id/dataId"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/value"
         android:layout_marginTop="1dp"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textSize="@dimen/SortedData_id"
+        android:textSize="@dimen/SortedData_dataId"
         />
 
     <!-- SortedData.sentence -->
@@ -44,24 +48,113 @@
         android:id="@+id/sentence"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/id"
+        android:layout_below="@+id/dataId"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/thumbnail"
         android:textColor="@color/SortedData_sentence"
         android:textSize="@dimen/SortedData_sentence"
         />
 
-    <!-- SortedData.description -->
+    <!-- SortedData.desc -->
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:textColor="@color/SortedData_description"
-        android:textSize="@dimen/SortedData_description"
+        android:textSize="@dimen/SortedData_desc"
         />
 
+    <!--~~~~~~-->
+    <!-- DEAL -->
+    <!--~~~~~~-->
+
+    <!-- Deal.description -->
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/Deal_used"
+        android:textStyle="bold"
+        />
+
+    <!-- Deal.retailer -->
+    <TextView
+        android:id="@+id/retailer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        />
+
+    <!-- Deal.address -->
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/retailer"
+        android:layout_alignLeft="@+id/retailer"
+        />
+
+    <!-- Deal.id -->
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/Deal_id"
+        />
+
+    <!-- Deal.used -->
+    <TextView
+        android:id="@+id/used"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Deal_used"
+        android:textSize="@dimen/Deal_used"
+        />
+
+    <!-- Deal.complaints -->
+    <TextView
+        android:id="@+id/complaints"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Deal_complaints"
+        android:textSize="@dimen/Deal_complaints"
+        />
+
+    <!-- Deal.start_date -->
+    <TextView
+        android:id="@+id/start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textColor="@color/Deal_start_date"
+        android:textSize="@dimen/Deal_start_date"
+        />
+
+    <!-- Deal.exp_date -->
+    <TextView
+        android:id="@+id/exp_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/Deal_exp_date"
+        android:textSize="@dimen/Deal_exp_date"
+        />
 
 
 </RelativeLayout>

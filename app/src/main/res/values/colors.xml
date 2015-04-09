@@ -12,4 +12,19 @@
     <color name="SortedData_sentence">#666666</color>
     <color name="SortedData_description">#888888</color>
 
+    <!-- Deal -->
+    <color name="Deal_description">#666666</color>
+    <color name="Deal_start_date">#88DD88</color>
+    <color name="Deal_exp_date">#DD8888</color>
+    <color name="Deal_used">#55BB55</color>
+    <color name="Deal_complaints">#BB5555</color>
+
+    <!-- Theme -->
+    <!-- Grasycale-->
+    <color name="fair_white">#DDDDDD</color>
+    <!-- Blues -->
+    <color name="faint_blue">#AACCFF</color>
+    <color name="mild_blue">#7799DD</color>
+    <color name="strong_blue">#3355BB</color>
+
 </resources>

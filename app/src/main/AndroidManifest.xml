@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--suppress AndroidDomInspection -->
+<!-- suppress AndroidDomInspection -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="austin.aquaman_aardvark" > <!-- Action Bar Dependancy -->
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="18" />
 
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- Added for ListView -->
-    <android:uses-permission
-        android:name="android.permission.INTERNET"
-        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
-        <!-- Added when attempting ListView -->
-        <!-- android:name="AppController.AppController" -->
+    <!-- Added when attempting ListView -->
+    <!-- android:name="AppController.AppController" -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -51,9 +45,22 @@
 
                 <category android:name="android.intent.action.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="austin.aquaman_aardvark.MainActivity" />
+        </activity>
+        <activity
+            android:name=".UrlRequest"
+            android:label="@string/title_activity_url_request" >
+        </activity>
+        <activity
+            android:name=".SortNew"
+            android:label="@string/title_activity_sort_new" >
+        </activity>
+        <activity
+            android:name=".SortPopular"
+            android:label="@string/title_activity_sort_popular" >
         </activity>
     </application>
 

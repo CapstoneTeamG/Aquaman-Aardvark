@@ -8,6 +8,8 @@ package ListViewUtils;
 
 //import Statements
 import java.util.List;
+
+import Objects.Deal;
 import Objects.SortedData;
 import austin.aquaman_aardvark.R;
 import android.app.Activity;
@@ -18,27 +20,33 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 
-public class CustomListAdapter extends BaseAdapter {
+import org.w3c.dom.Text;
+
+
+public class DealListAdapter extends BaseAdapter {
 
     private Activity activity;
     private LayoutInflater inflater;
-    private List<SortedData> dataList;
+//    private List<SortedData> dataList;
+    private List<Deal> deals;
 //    ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
-    public CustomListAdapter(Activity activity, List<SortedData> data_in){
+    public DealListAdapter(Activity activity, List<Deal> data_in){
         this.activity = activity;
-        this.dataList = data_in;
+        this.deals = data_in;
     }
 
     @Override
     public int getCount() {
-        return dataList.size();
+        return deals.size();
     }
 
     @Override
     public Object getItem(int location) {
-        return dataList.get(location);
+        return deals.get(location);
     }
 
     @Override
@@ -60,19 +68,23 @@ public class CustomListAdapter extends BaseAdapter {
 //        NetworkImageView thumbNail = (NetworkImageView) convertView.findViewById(R.id.thumbnail);
 
         TextView thumbNail = (TextView) convertView.findViewById(R.id.thumbnail);
-        TextView value = (TextView) convertView.findViewById(R.id.value);
-        TextView dataId = (TextView) convertView.findViewById(R.id.dataId);
-        TextView sentence = (TextView) convertView.findViewById(R.id.sentence);
-        TextView desc = (TextView) convertView.findViewById(R.id.desc);
+//        TextView description = (TextView) convertView.findViewById(R.id.description);
+        TextView address = (TextView) convertView.findViewById(R.id.address);
+        TextView retailer = (TextView) convertView.findViewById(R.id.retailer);
+        TextView used = (TextView) convertView.findViewById(R.id.used);
+        TextView complaints = (TextView) convertView.findViewById(R.id.complaints);
+        TextView start_date = (TextView) convertView.findViewById(R.id.start_date);
+        TextView exp_date = (TextView) convertView.findViewById(R.id.exp_date);
 
         // Data for the row
-        SortedData number = dataList.get(position);
+        Deal deal = deals.get(position);
 
 //        thumbNail.setImageURL(number.getThumbnailUrl(), imageLoader);
 
-        value.setText(String.valueOf(number.getValue()));
+        retailer.setText(deal.getRetailer());
+        address.setText(deal.getAddress());
 
-        dataId.setText("Id: " + String.valueOf(number.getDataId()));
+//        id.setText("Id: " + String.valueOf(deal.getId()));
 
         // When deals have tags
 //        String tagStr="";
@@ -82,9 +94,11 @@ public class CustomListAdapter extends BaseAdapter {
 //        }
 //        tagStr = tagStr.length() > 0 ? tagStr.substring(0, tagStr.length() -2) : tagStr;
 //        tags.setText(tagStr);
-        sentence.setText(number.getSentence());
+        used.setText(String.valueOf(deal.getUsed()));
+        complaints.setText(String.valueOf(deal.getComplaints()));
 
-        desc.setText(number.getDesc());
+        start_date.setText("Starts: " + deal.getStart_Date().toString());
+//        exp_date.setText("  Ends: " + deal.getExp_Date().toString());
 
         return convertView;
     }
