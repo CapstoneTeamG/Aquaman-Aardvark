@@ -11,12 +11,12 @@ public class Deal implements Comparable<Deal>{
 	String user;
 	String retailer;
     String address;
+	String description;
 	Date start_date;
 	Date exp_date;
 	int used;
 	int complaints;
 	int rank;
-	String description;
 	// Need in database
 	int user_id;
 	int retailer_id;
@@ -73,10 +73,11 @@ public class Deal implements Comparable<Deal>{
 		final int USER = 1;
 		final int RETAILER = 2;
 		final int ADDRESS = 3;
-		final int START_DATE = 4;
-		final int EXP_DATE = 5;
-		final int USED = 6;
-		final int COMPLAINTS = 7;
+        final int DESCRIPTION = 4;
+		final int START_DATE = 5;
+		final int EXP_DATE = 6;
+		final int USED = 7;
+		final int COMPLAINTS = 8;
 
 		// Chances are likely that this deal is invalid
 		if (record.charAt(0) != '{' || record.charAt(record.length() - 1) != '}')
@@ -109,14 +110,13 @@ public class Deal implements Comparable<Deal>{
             this.user = instanceVariables[USER];
             this.retailer = instanceVariables[RETAILER];
             this.address = instanceVariables[ADDRESS];
+            this.description = instanceVariables[DESCRIPTION];
             this.start_date = new Date(instanceVariables[START_DATE]);
             this.exp_date = new Date(instanceVariables[EXP_DATE]);
             this.used = Integer.parseInt(instanceVariables[USED]);
             this.complaints = Integer.parseInt(instanceVariables[COMPLAINTS]);
 			
 			// Need in database
-			this.used = 0;
-				
 			this.valid = true;
 		}
 		
@@ -230,12 +230,12 @@ public class Deal implements Comparable<Deal>{
 		{
 			deals.add(new Deal(record));
 		}
-		
+
 		return deals;
 	}
-	
+
 	// Ovverrides
-	
+
 	@Override
 	public int compareTo(Deal otherDeal)
 	{
@@ -249,7 +249,16 @@ public class Deal implements Comparable<Deal>{
             // Descending
             difference = otherCompareValue - thisCompareValue;
 
-            // If used is the same, sort by start_date
+            // If used is the same, sort by complaints
+            if (difference == 0) {
+                thisCompareValue = this.complaints;
+                otherCompareValue = otherDeal.complaints;
+
+                // Ascending
+                difference = thisCompareValue - otherCompareValue;
+            }
+
+            // If complaints is the same, sort by start_date
             if (difference == 0) {
                 difference = compareDate(this.getStart_Date(), otherDeal.getStart_Date());
             }
@@ -261,27 +270,41 @@ public class Deal implements Comparable<Deal>{
 
             // If exp_date is the same, sort by rank
             if (difference == 0) {
+                thisCompareValue = this.getRank();
+                otherCompareValue = otherDeal.getRank();
+
                 // Descending
-                difference = otherDeal.getRank() - this.getRank();
+                difference = otherCompareValue - thisCompareValue;
             }
 
         }
         else if (Deal.sortCritera == Deal.SORT_NEW)
         {
+            int thisCompareValue = 0;
+            int otherCompareValue = 0;
 
             // Default, sort by start_date
             difference = compareDate(this.getStart_Date(), otherDeal.getStart_Date());
 
             // If start_date is the same, sort by used
             if (difference == 0) {
-                int thisCompareValue = this.used;
-                int otherCompareValue = otherDeal.used;
+            thisCompareValue = this.used;
+             otherCompareValue = otherDeal.used;
 
                 // Descending
                 difference = otherCompareValue - thisCompareValue;
             }
 
-            // If start_date is the same, sort by exp_date
+            // If used is the same, sort by complaints
+            if (difference == 0) {
+                thisCompareValue = this.complaints;
+                otherCompareValue = otherDeal.complaints;
+
+                // Ascending
+                difference = thisCompareValue - otherCompareValue;
+            }
+
+            // If complaints is the same, sort by exp_date
             if (difference == 0) {
                 difference = compareDate(this.getExp_Date(), otherDeal.getExp_Date());
             }
@@ -300,19 +323,19 @@ public class Deal implements Comparable<Deal>{
 
         return difference;
 	}
-	
+
 	// Returns an int (to compareTo() method)
 	// Used to sort Deals by start_date, ascending order
 	public int compareDate (Date thisDate, Date otherDate)
 	{
 		int difference = 0;
-		
+
 		// Default, sort by year
 		int thisCompareValue = thisDate.getYear();
 		int otherCompareValue = otherDate.getYear();
 		// Descending
 		difference = otherCompareValue - thisCompareValue;
-		
+
 		// Break ties to month
 		if (difference == 0)
 		{
@@ -322,7 +345,7 @@ public class Deal implements Comparable<Deal>{
 			// Descending
 			difference = otherCompareValue - thisCompareValue;
 		}
-		
+
 		// Break final ties to day
 		if (difference == 0)
 		{
@@ -332,7 +355,7 @@ public class Deal implements Comparable<Deal>{
 			// Descending
 			difference = otherCompareValue - thisCompareValue;
 		}
-		
+
 		return difference;
 	}
 

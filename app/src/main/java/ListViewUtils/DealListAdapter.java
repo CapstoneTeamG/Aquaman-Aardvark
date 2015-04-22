@@ -68,7 +68,7 @@ public class DealListAdapter extends BaseAdapter {
 //        NetworkImageView thumbNail = (NetworkImageView) convertView.findViewById(R.id.thumbnail);
 
         TextView thumbNail = (TextView) convertView.findViewById(R.id.thumbnail);
-//        TextView description = (TextView) convertView.findViewById(R.id.description);
+        TextView description = (TextView) convertView.findViewById(R.id.description);
         TextView address = (TextView) convertView.findViewById(R.id.address);
         TextView retailer = (TextView) convertView.findViewById(R.id.retailer);
         TextView used = (TextView) convertView.findViewById(R.id.used);
@@ -82,6 +82,7 @@ public class DealListAdapter extends BaseAdapter {
 //        thumbNail.setImageURL(number.getThumbnailUrl(), imageLoader);
 
         retailer.setText(deal.getRetailer());
+        description.setText(deal.getDescription());
         address.setText(deal.getAddress());
 
 //        id.setText("Id: " + String.valueOf(deal.getId()));

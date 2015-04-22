@@ -47,13 +47,9 @@ public class DealList {
 
         deals = new ArrayList<Deal>();
 
-        // TODO: REMOVE RANDOM STUFF
-        Random rand = new Random();
         for (String record : stringRecordList)
         {
             Deal addedDeal = new Deal(record);
-            addedDeal.setUsed(rand.nextInt(50));
-            addedDeal.setComplaints(rand.nextInt(15));
 
             deals.add(addedDeal);
         }
