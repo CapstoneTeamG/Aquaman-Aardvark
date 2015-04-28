@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/row"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_row_selector"
@@ -154,6 +155,17 @@
         android:textColor="@color/Deal_exp_date"
         android:textSize="@dimen/Deal_exp_date"
         />
+
+    <!-- Deal.user_rank -->
+    <TextView
+        android:id="@+id/user_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/retailer"
+        android:textColor="@color/Deal_exp_date"
+        android:textSize="@dimen/Deal_exp_date"
+        />
+
 
 
 </RelativeLayout>

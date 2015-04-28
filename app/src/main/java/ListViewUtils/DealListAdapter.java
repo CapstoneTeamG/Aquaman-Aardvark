@@ -14,10 +14,12 @@ import Objects.SortedData;
 import austin.aquaman_aardvark.R;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -75,6 +77,9 @@ public class DealListAdapter extends BaseAdapter {
         TextView complaints = (TextView) convertView.findViewById(R.id.complaints);
         TextView start_date = (TextView) convertView.findViewById(R.id.start_date);
         TextView exp_date = (TextView) convertView.findViewById(R.id.exp_date);
+        TextView user_rank = (TextView) convertView.findViewById(R.id.user_rank);
+
+        RelativeLayout row = (RelativeLayout) convertView.findViewById(R.id.row);
 
         // Data for the row
         Deal deal = deals.get(position);
@@ -99,7 +104,44 @@ public class DealListAdapter extends BaseAdapter {
         complaints.setText(String.valueOf(deal.getComplaints()));
 
         start_date.setText("Starts: " + deal.getStart_Date().toString());
+
+//        if (deal.isBusinessDeal())
+//            user_rank.setText("***");
+//        else
+//            user_rank.setText("");
+//            user_rank.setText(String.valueOf(deal.getUser_rank()));
+
 //        exp_date.setText("  Ends: " + deal.getExp_Date().toString());
+
+        if (deal.isBusinessDeal()) {
+            // Row background
+            row.setBackgroundColor(convertView.getResources().getColor(R.color.mild_blue));
+
+            // Used, complaints, start_date backgrounds
+            used.setBackgroundColor(convertView.getResources().getColor(R.color.fair_white));
+            complaints.setBackgroundColor(convertView.getResources().getColor(R.color.fair_white));
+            start_date.setBackgroundColor(convertView.getResources().getColor(R.color.mild_blue));
+
+            // retailer, description, address text colors
+            retailer.setTextColor(convertView.getResources().getColor(R.color.fair_white));
+            description.setTextColor(convertView.getResources().getColor(R.color.fair_white));
+            address.setTextColor(convertView.getResources().getColor(R.color.fair_white));
+        }
+        else {
+            // Row background
+            row.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+            // Used, complaints, start_date backgrounds
+            used.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            complaints.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            start_date.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+            // retailer, description, address text colors
+            retailer.setTextColor(convertView.getResources().getColor(R.color.Deal_description));
+            description.setTextColor(convertView.getResources().getColor(R.color.Deal_description));
+            address.setTextColor(convertView.getResources().getColor(R.color.Deal_description));
+        }
+
 
         return convertView;
     }

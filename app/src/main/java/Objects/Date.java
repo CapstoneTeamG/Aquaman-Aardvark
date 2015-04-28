@@ -1,6 +1,8 @@
 package Objects;
 
-public class Date {
+import java.io.Serializable;
+
+public class Date implements Serializable{
 
 	int day;
 	int month;

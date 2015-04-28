@@ -2,12 +2,17 @@ package austin.aquaman_aardvark;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -20,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ListViewUtils.DealListAdapter;
+import Objects.Deal;
 import Objects.DealList;
 import Objects.SortedData;
 
@@ -43,27 +49,42 @@ public class SortPopular extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sort_new);
 
-        String url = "http://uaf58598.ddns.uark.edu/php_to_java/pulldeals.php";
+        String pullDealsUrl = "http://uaf58598.ddns.uark.edu/php_to_java/pulldeals.php";
 
 
         // ADDED FROM TUTORIAL
         final int numData = 10;
 
         listView = (ListView) findViewById(R.id.list);
-//        adapter = new CustomListAdapter(this, dataList);
-//        adapter = new DealListAdapter(this, dealList.getDeals());
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            Intent clickListenerIntent = null;
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+
+//                String item = "This is some text!";
+//
+//                Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
+                Deal dealElement = (Deal) parent.getAdapter().getItem(position);
+//                String item = dealElement.getDescription();
+//                Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
+                clickListenerIntent = new Intent(getApplicationContext(), DealActivity.class);
+                clickListenerIntent.putExtra("Deal", dealElement);
+
+                startActivity(clickListenerIntent);
+
+            }
+        });
 
         pDialog = new ProgressDialog(this);
         // Showing progress dialog before making http request
         pDialog.setMessage("Loading. . .");
 //        pDialog.show();
         DownloadTask dlTask = new DownloadTask();
-        dlTask.execute(url);
+        dlTask.execute(pullDealsUrl);
 
-//        dealList.deals.add(new Deal());
-//        dealList.deals.add(new Deal());
-//        dealList.deals.add(new Deal());
-//        dealList.deals.add(new Deal());
     }
 
 

@@ -62,6 +62,10 @@
             android:name=".SortPopular"
             android:label="@string/title_activity_sort_popular" >
         </activity>
+        <activity
+            android:name=".DealActivity"
+            android:label="@string/title_activity_deal" >
+        </activity>
     </application>
 
 </manifest>

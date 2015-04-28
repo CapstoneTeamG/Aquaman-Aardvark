@@ -2,9 +2,10 @@ package Objects;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.io.Serializable;
 
 
-public class Deal implements Comparable<Deal>{
+public class Deal implements Comparable<Deal>, Serializable{
 
 	// Database
 	int id;
@@ -17,16 +18,17 @@ public class Deal implements Comparable<Deal>{
 	int used;
 	int complaints;
 	int rank;
-	// Need in database
 	int user_id;
 	int retailer_id;
 	boolean valid;
+    int user_rank;
 
 
     // finals
     public static final int SORT_POPULAR = 0;
     public static final int SORT_NEW = 1;
     public static final int SORT_PROXIMITY = 2;
+    public static final int BUSINESS_RANK = 11;
 
     // Functionality
     static int sortCritera = Deal.SORT_POPULAR;
@@ -78,6 +80,7 @@ public class Deal implements Comparable<Deal>{
 		final int EXP_DATE = 6;
 		final int USED = 7;
 		final int COMPLAINTS = 8;
+        final int USER_RANK = 9;
 
 		// Chances are likely that this deal is invalid
 		if (record.charAt(0) != '{' || record.charAt(record.length() - 1) != '}')
@@ -88,6 +91,7 @@ public class Deal implements Comparable<Deal>{
 			this.start_date = null;
 			this.exp_date = null;
 			this.description = null;
+            this.user_rank = -1;
 
 			// Need in database
 			this.used = 0;
@@ -99,13 +103,6 @@ public class Deal implements Comparable<Deal>{
 			String trimmedRecord = record.substring(1, record.length() - 1);
 			String[] instanceVariables = trimmedRecord.split(",");
 			
-//			this.id = Integer.parseInt(instanceVariables[ID]);
-//			this.user = instanceVariables[USER];
-//			this.rank = Integer.parseInt(instanceVariables[Retailer]);
-//			this.start_date = new Date(instanceVariables[Address]);
-//			this.exp_date = new Date(instanceVariables[Start_date]);
-//			this.description = instanceVariables[Complaints];
-
             this.id = Integer.parseInt(instanceVariables[ID]);
             this.user = instanceVariables[USER];
             this.retailer = instanceVariables[RETAILER];
@@ -115,6 +112,7 @@ public class Deal implements Comparable<Deal>{
             this.exp_date = new Date(instanceVariables[EXP_DATE]);
             this.used = Integer.parseInt(instanceVariables[USED]);
             this.complaints = Integer.parseInt(instanceVariables[COMPLAINTS]);
+            this.user_rank = Integer.parseInt(instanceVariables[USER_RANK]);
 			
 			// Need in database
 			this.valid = true;
@@ -163,6 +161,8 @@ public class Deal implements Comparable<Deal>{
 	public int getUser_id() {
 		return user_id;
 	}
+
+    public int getUser_rank() {return this.user_rank;}
 	
 	public String getRetailer() {
 		return retailer;
@@ -220,6 +220,18 @@ public class Deal implements Comparable<Deal>{
 		this.valid = valid;
 	}
 
+    public void gotUsed()
+    {
+        this.used++;
+    }
+
+    public void gotComplaint()
+    {
+        this.complaints++;
+    }
+
+    public boolean isBusinessDeal() {return (this.user_rank == BUSINESS_RANK);}
+
 	// Functionality
 	
 	public static ArrayList<Deal> parseDeals (ArrayList<String> records)
@@ -243,11 +255,27 @@ public class Deal implements Comparable<Deal>{
 
         if (Deal.sortCritera == Deal.SORT_POPULAR) {
 
+            int thisCompareValue = 0;
+            int otherCompareValue = 0;
+
+            // First, sort by business posted deals
+            if (this.isBusinessDeal() && !otherDeal.isBusinessDeal())
+            {
+                    difference = -1;
+            }
+
+            if (!this.isBusinessDeal() && otherDeal.isBusinessDeal())
+            {
+                difference = 1;
+            }
+
             // Default, sort by used
-            int thisCompareValue = this.used;
-            int otherCompareValue = otherDeal.used;
-            // Descending
-            difference = otherCompareValue - thisCompareValue;
+            if (difference == 0) {
+                thisCompareValue = this.used;
+                otherCompareValue = otherDeal.used;
+                // Descending
+                difference = otherCompareValue - thisCompareValue;
+            }
 
             // If used is the same, sort by complaints
             if (difference == 0) {
@@ -283,8 +311,20 @@ public class Deal implements Comparable<Deal>{
             int thisCompareValue = 0;
             int otherCompareValue = 0;
 
+            if (this.isBusinessDeal() && !otherDeal.isBusinessDeal())
+            {
+                    difference = -1;
+            }
+
+            if (!this.isBusinessDeal() && otherDeal.isBusinessDeal())
+            {
+                difference = 1;
+            }
+
             // Default, sort by start_date
-            difference = compareDate(this.getStart_Date(), otherDeal.getStart_Date());
+            if (difference == 0) {
+                difference = compareDate(this.getStart_Date(), otherDeal.getStart_Date());
+            }
 
             // If start_date is the same, sort by used
             if (difference == 0) {

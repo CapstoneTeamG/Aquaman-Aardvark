@@ -2,12 +2,15 @@ package austin.aquaman_aardvark;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.apache.http.HttpResponse;
@@ -106,6 +109,27 @@ public class SortNew extends Activity {
             dealList.sortNew();
         adapter = new DealListAdapter(SortNew.this, dealList.getDeals());
         listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                Intent clickListenerIntent = null;
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position,
+                                        long id) {
+
+
+//                String item = "This is some text!";
+//
+//                Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
+                    Deal dealElement = (Deal) parent.getAdapter().getItem(position);
+//                String item = dealElement.getDescription();
+//                Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
+                    clickListenerIntent = new Intent(getApplicationContext(), DealActivity.class);
+                    clickListenerIntent.putExtra("Deal", dealElement);
+
+                    startActivity(clickListenerIntent);
+
+                }
+            });
 
 //            if (dealList.isEmpty()) {
 //                finish();
